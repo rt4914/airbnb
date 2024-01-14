@@ -102,3 +102,6 @@ yarn-debug.log*
 
 **/.DS_Store
 .DS_Store
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
