@@ -1,7 +1,31 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+Property.create!({
+  name: 'Sample Property',
+  description: 'asf34daf',
+  headline: 'asfd345af',
+  address_1: 'asfd345af',
+  address_2: 'asf435daf',
+  city: 'asfd345af',
+  state: 'asfd345af',
+  country: 'asf345daf',
+})
+
+Property.create!({
+  name: 'Sample Property 2',
+  description: 'wr',
+  headline: 'asd',
+  address_1: 'asfd345wraf',
+  address_2: 'asd',
+  city: 'ewr',
+  state: 'er',
+  country: 'er',
+})
+
+Property.create!({
+  name: 'wr',
+  headline: 'asd',
+  address_1: 'asfd345wraf',
+  address_2: 'asd',
+  city: 'ewr',
+  state: 'er',
+  country: 'er',
+})
