@@ -30,7 +30,9 @@
             </div>
             <p class="mt-0.5 text-sm text-gray-500">Hosted by Rajat</p>
             <p class="mt-0.5 text-sm text-gray-500">20-25 Jan</p>
-            <p class="mt-0.5 text-sm font-light text-black"><span class="font-medium">$110</span> night</p>
+            <p class="mt-0.5 text-sm font-light text-black">
+              <span class="font-medium"><%= humanized_money_with_symbol(property.price) %></span> night
+            </p>
           </div>
         </div>
       <% end %>
