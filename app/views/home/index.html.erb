@@ -4,7 +4,7 @@
       <% @properties.each do |property| %>
         <div class="group relative">
           <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
-            <img src="https://www.luxsphere.co/wp-content/uploads/most-expnsive-airbnb-in-the-world-Villa-Victoria-4-.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+            <%= image_tag property.images.first, class:"h-full w-full object-cover object-center lg:h-full lg:w-full" %>
           </div>
           <div class="mt-2">
             <div class="flex justify-between">

@@ -86,10 +86,14 @@ GEM
     erubi (1.12.0)
     faker (3.2.3)
       i18n (>= 1.8.11, < 2)
+    ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -111,6 +115,7 @@ GEM
       net-smtp
     marcel (1.0.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.21.1)
     monetize (1.12.0)
@@ -192,6 +197,8 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    ruby-vips (2.2.0)
+      ffi (~> 1.12)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -247,6 +254,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9, >= 4.9.3)
   faker
+  image_processing (>= 1.2)
   importmap-rails
   jbuilder
   money-rails (~> 1.12)
