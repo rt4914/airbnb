@@ -3,8 +3,18 @@
     <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
       <% @properties.each do |property| %>
         <div class="group relative">
-          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
-            <%= image_tag property.images.first, class:"h-full w-full object-cover object-center lg:h-full lg:w-full" %>
+          <!-- Slider main container -->
+          <div class="swiper aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <% property.images.each do |image| %>
+                <%= image_tag image, class:"swiper-slide h-full w-full object-cover object-center lg:h-full lg:w-full" %>
+              <% end %>
+            </div>
+            
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
           <div class="mt-2">
             <div class="flex justify-between">
