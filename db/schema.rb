@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_142429) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_22_163936) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_142429) do
     t.string "price_currency"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "cleanliness_rating"
+    t.integer "accuracy_rating"
+    t.integer "checkin_rating"
+    t.integer "communication_rating"
+    t.integer "location_rating"
+    t.integer "value_rating"
+    t.decimal "final_rating"
+    t.bigint "user_id", null: false
+    t.bigint "property_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_reviews_on_property_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -71,4 +88,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_142429) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "properties"
+  add_foreign_key "reviews", "users"
 end
