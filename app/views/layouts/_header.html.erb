@@ -70,9 +70,10 @@
           >
             <!-- Active: "bg-gray-100", Not Active: "" -->
             <% if user_signed_in? %>
+              <%= link_to "Wishlist", '', class:"block px-4 py-2 text-sm text-gray-700", role:"menuitem", tabindex:"-1" %>
               <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete }, class:"block px-4 py-2 text-sm text-gray-700", role:"menuitem", tabindex:"-1" %>
             <% else %>
-              <%= link_to "Log in", new_user_session_path, class:'block px-4 py-2 text-sm text-gray-700', role:"menuitem", tabindex:"-1" %>
+              <%= link_to "Log in", new_user_session_path, class:'js-login block px-4 py-2 text-sm text-gray-700', role:"menuitem", tabindex:"-1" %>
               <%= link_to "Sign up", new_user_registration_path, class:'block px-4 py-2 text-sm text-gray-700', role:"menuitem", tabindex:"-1" %>
             <% end %>
           </div>
@@ -95,7 +96,7 @@
       </div>
       <div class="mt-3 space-y-1 px-2">
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Log out</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Log in</a>
+        <a href="#" class="js-login block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Log in</a>
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Sign up</a>
       </div>
     </div>

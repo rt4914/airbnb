@@ -26,6 +26,7 @@
                 class="block h-6 w-6 stroke-white stroke-2 fill-none"
                 style="overflow: visible;"
                 data-controller="wishlist"
+                data-user-logged-in="<%= user_signed_in? %>"
                 data-action="click->wishlist#updateWishlistStatus"
                 data-status="false"
                 >
