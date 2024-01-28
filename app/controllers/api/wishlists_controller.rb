@@ -18,7 +18,7 @@ module Api
 
       respond_to do |format|
         format.json do
-          render status: 204
+          render json: wishlist.to_json, status: 204
         end
       end
     end

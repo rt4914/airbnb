@@ -27,6 +27,9 @@
                 style="overflow: visible;"
                 data-controller="wishlist"
                 data-user-logged-in="<%= user_signed_in? %>"
+                data-property-id="<%= property.id %>"
+                data-user-id="<%= current_user&.id %>"
+                data-wishlist-id="<%= property.wishlists.find_by(user: current_user)&.id %>"
                 data-action="click->wishlist#updateWishlistStatus"
                 data-status="<%= property.wishlisted_by?(current_user) %>"
                 >
