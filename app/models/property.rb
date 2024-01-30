@@ -29,4 +29,19 @@ class Property < ApplicationRecord
 
     wishlisted_users.include?(user)
   end
+
+  def available_dates
+    next_reservation = reservations.upcoming_reservations.first
+    current_reservation = reservations.current_reservations.first
+
+    if current_reservation.nil? && next_reservation.nil?
+      Date.tomorrow.strftime('%e %b')..(Date.tomorrow + 30.days).strftime('%e %b')
+    elsif current_reservation.nil?
+      Date.tomorrow.strftime('%e %b')..next_reservation.checkin_date.strftime('%e %b')
+    elsif next_reservation.nil?
+      current_reservation.checkout_date.strftime('%e %b')..(Date.tomorrow + 30.days).strftime('%e %b')
+    else
+      current_reservation.checkout_date.strftime('%e %b')..next_reservation.checkin_date.strftime('%e %b')
+    end
+  end
 end
