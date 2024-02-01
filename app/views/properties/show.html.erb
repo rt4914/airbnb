@@ -1,6 +1,6 @@
 <div class="bg-white">
   <main class="pt-4">
-    <!-- Headline + Share + Like -->
+    <!-- Headline + Share + Wishlist -->
     <div class="flex justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 py-2">
       <h1 class="inline text-2xl font-medium leading-7 text-gray-900 sm:truncate"><%= @property.headline %></h1>
       <div class="space-x-1">
@@ -40,20 +40,25 @@
       </div>
     </div>
     <!-- Image gallery -->
-    <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-      <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
-        <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg" alt="Two each of gray, white, and black shirts laying flat." class="h-full w-full object-cover object-center">
+    <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-x-2 lg:px-8">
+      <div class="aspect-h-2 aspect-w-3 overflow-hidden lg:rounded-l-lg lg:block col-span-2">
+        <%= image_tag @property.images[0], class:"h-full w-full object-cover object-center" %>
       </div>
-      <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-          <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg" alt="Model wearing plain black basic tee." class="h-full w-full object-cover object-center">
+      <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-2">
+        <div class="aspect-h-2 aspect-w-3 overflow-hidden">
+          <%= image_tag @property.images[1], class:"h-full w-full object-cover object-center" %>
         </div>
-        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-          <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg" alt="Model wearing plain gray basic tee." class="h-full w-full object-cover object-center">
+        <div class="aspect-h-2 aspect-w-3 overflow-hidden">
+          <%= image_tag @property.images[2], class:"h-full w-full object-cover object-center" %>
         </div>
       </div>
-      <div class="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-        <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg" alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
+      <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-2">
+        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-tr-lg">
+          <%= image_tag @property.images[3], class:"h-full w-full object-cover object-center" %>
+        </div>
+        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-br-lg">
+          <%= image_tag @property.images[4], class:"h-full w-full object-cover object-center" %>
+        </div>
       </div>
     </div>
 
