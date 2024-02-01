@@ -62,10 +62,32 @@
       </div>
     </div>
 
-    <!-- Product info -->
-    <div class="mx-auto max-w-2xl px-4 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16">
+    <!-- Property info -->
+    <div class="mx-auto max-w-2xl px-4 pt-8 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8">
       <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Basic Tee 6-Pack</h1>
+        <h2 class="text-xl font-medium leading-6 text-gray-900 sm:truncate"><%= @property.name %>, <%= @property.country %></h2>
+        <div class="mt-1 font-light">
+          <%# TODO: Add checks: check if any value is 0 or 1 or more than 1 %>
+          <%= @property.guest_count %> guests · <%= @property.bedroom_count %> bedrooms · <%= @property.bed_count %> beds · <%= @property.bathroom_count %> bathrooms
+        </div>
+        <div class="mt-1 flex text-base items-center">
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 32 32" 
+            aria-hidden="true" 
+            role="presentation" 
+            focusable="false"
+            class="me-1"
+            style="display: inline; height: 16px; width: 16px; fill: currentcolor;"
+          >
+            <path fill-rule="evenodd" d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"></path>
+          </svg>
+          <% if @property.reviews_count != 0 %>
+            <span class="font-medium"><%= (@property.average_final_rating).round(2) %> · <span class="underline"><%= @property.reviews_count %> reviews</span> </span>
+          <% else %>
+            <span class="font-light">No reviews yet</span>
+          <% end %>
+        </div>
       </div>
 
       <!-- Options -->
