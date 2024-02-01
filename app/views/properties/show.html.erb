@@ -9,8 +9,16 @@
           <span class="underline text-sm ms-1">Share</span>
         </span>
 
-        <%# TODO: Make entire span clickable %>
-        <span class="px-3 pt-2 pb-3 hover:rounded-md hover:bg-gray-100 cursor-pointer">
+        <span 
+          class="px-3 pt-2 pb-3 hover:rounded-md hover:bg-gray-100 cursor-pointer"
+          data-controller="wishlist"
+          data-user-logged-in="<%= user_signed_in? %>"
+          data-property-id="<%= @property.id %>"
+          data-user-id="<%= current_user&.id %>"
+          data-wishlist-id="<%= @property.wishlists.find_by(user: current_user)&.id %>"
+          data-action="click->wishlist#updateWishlistStatus"
+          data-status="<%= @property.wishlisted_by?(current_user) %>"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 32 32" 
             aria-hidden="true" 
@@ -18,17 +26,16 @@
             focusable="false"
             class="inline h-4 w-4 stroke-black stroke-2 <%= @property.wishlisted_by?(current_user) ? 'fill-primary' : 'fill-none' %>"
             style="overflow: visible;"
-            data-controller="wishlist"
-            data-user-logged-in="<%= user_signed_in? %>"
-            data-property-id="<%= @property.id %>"
-            data-user-id="<%= current_user&.id %>"
-            data-wishlist-id="<%= @property.wishlists.find_by(user: current_user)&.id %>"
-            data-action="click->wishlist#updateWishlistStatus"
-            data-status="<%= @property.wishlisted_by?(current_user) %>"
+            data-wishlist-target="icon"
             >
               <path d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z"></path>
           </svg>
-          <span class="underline text-sm ms-1"><%= @property.wishlisted_by?(current_user) ? 'Saved' : 'Save' %></span>
+          <span 
+            class="underline text-sm ms-1"
+            data-wishlist-target="text"
+          >
+            <%= @property.wishlisted_by?(current_user) ? 'Saved' : 'Save' %>
+          </span>
         </span>
       </div>
     </div>
