@@ -46,7 +46,7 @@
                     <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
                       <div class="relative ml-1 flex-1">
                         <div class="h-1 rounded-full border border-gray-200 bg-gray-200"></div>
-                        <div style="width: <%= (@overall_rating_counts[(5-index)] || 0) * 100 / property.reviews_count %>%" class="absolute inset-y-0 rounded-full border border-black bg-black"></div>
+                        <div style="width: <%= (@overall_rating_counts[(5-index)]) * 100 / property.reviews_count %>%" class="absolute inset-y-0 rounded-full border border-black bg-black"></div>
                       </div>
                     </div>
                   </dt>
