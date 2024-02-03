@@ -22,8 +22,32 @@ class Property < ApplicationRecord
   has_rich_text :description
 
   def update_average_rating
-    average_rating = reviews.average(:final_rating);
+    average_rating = reviews.average(:final_rating)
     update_column(:average_final_rating, average_rating)
+  end
+
+  def average_cleanliness_rating
+    reviews.average(:cleanliness_rating)
+  end
+
+  def average_accuracy_rating
+    reviews.average(:accuracy_rating)
+  end
+
+  def average_checkin_rating
+    reviews.average(:checkin_rating)
+  end
+
+  def average_communication_rating
+    reviews.average(:communication_rating)
+  end
+
+  def average_location_rating
+    reviews.average(:location_rating)
+  end
+
+  def average_value_rating
+    reviews.average(:value_rating)
   end
 
   def wishlisted_by?(user = nil)
