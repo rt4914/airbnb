@@ -1,0 +1,308 @@
+<div class="mx-auto max-w-2xl px-4 pt-8 sm:px-6 lg:max-w-7xl lg:px-8"> 
+  <h2 id="reviews-heading" class="sr-only">Reviews</h2>
+  <!-- Review Stats -->
+  <section aria-labelledby="reviews-stats" class="border-t border-gray-200 pt-10 pb-10">
+    <% if property.reviews_count == 0 %>
+      <span class="text-2xl font-medium leading-6 text-gray-900 flex items-center">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 32 32" 
+          aria-hidden="true" 
+          role="presentation" 
+          focusable="false" 
+          class="inline h-6 w-6 fill-current me-2"
+        >
+            <path d="m10.66 9.74-8.23 1-.15.02a2 2 0 0 0-.93 3.47l6.2 5.46-2 8.52-.03.15a2 2 0 0 0 2.96 2.05L16 26.15l7.52 4.26.13.07a2 2 0 0 0 2.8-2.27l-2-8.52 6.2-5.46.11-.11a2 2 0 0 0-1.19-3.38l-8.23-1-3.53-7.55a2 2 0 0 0-3.62 0zM12 11.59l4-8.56 4 8.56 9.33 1.13-7.1 6.26 2.27 9.69-8.5-4.82-8.5 4.82 2.28-9.7-7.11-6.25z"></path>
+        </svg>
+        No reviews (yet)
+      </span>
+    <% else %>
+      <div class="mt-1 text-2xl font-medium leading-6 text-gray-900 flex items-center">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 32 32" 
+          aria-hidden="true" 
+          role="presentation" 
+          focusable="false"
+          class="inline h-5 w-5 fill-current me-2"
+        >
+          <path fill-rule="evenodd" d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"></path>
+        </svg>
+        <span><%= (@property.average_final_rating).round(2) %> · <%= @property.reviews_count %> reviews</span>
+      </div>
+
+      <!-- Review category stats -->
+      <div class="grid-cols-7 gap-4 mt-8 divide-x hidden lg:grid">
+        <div class="pr-2">
+          <h4 class="text-sm font-medium">Overall rating</h4>
+          <div class="mt-2">
+            <h3 class="sr-only">Review data</h3>
+
+            <dl class="space-y-0">
+              <div class="flex items-center text-xs">
+                <dt class="flex flex-1 items-center">
+                  <p class="w-3 font-medium text-gray-900">5<span class="sr-only"> star reviews</span></p>
+                  <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
+                    <div class="relative ml-1 flex-1">
+                      <div class="h-1 rounded-full border border-gray-200 bg-gray-200"></div>
+                      <div style="width: calc(1019 / 1624 * 100%)" class="absolute inset-y-0 rounded-full border border-black bg-black"></div>
+                    </div>
+                  </div>
+                </dt>
+              </div>
+              <div class="flex items-center text-xs">
+                <dt class="flex flex-1 items-center">
+                  <p class="w-3 font-medium text-gray-900">4<span class="sr-only"> star reviews</span></p>
+                  <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
+                    <div class="relative ml-1 flex-1">
+                      <div class="h-1 rounded-full border border-gray-200 bg-gray-200"></div>
+                      <div style="width: calc(162 / 1624 * 100%)" class="absolute inset-y-0 rounded-full border border-black bg-black"></div>
+                    </div>
+                  </div>
+                </dt>
+              </div>
+              <div class="flex items-center text-xs">
+                <dt class="flex flex-1 items-center">
+                  <p class="w-3 font-medium text-gray-900">3<span class="sr-only"> star reviews</span></p>
+                  <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
+                    <div class="relative ml-1 flex-1">
+                      <div class="h-1 rounded-full border border-gray-200 bg-gray-200"></div>
+                      <div style="width: calc(97 / 1624 * 100%)" class="absolute inset-y-0 rounded-full border border-black bg-black"></div>
+                    </div>
+                  </div>
+                </dt>
+              </div>
+              <div class="flex items-center text-xs">
+                <dt class="flex flex-1 items-center">
+                  <p class="w-3 font-medium text-gray-900">2<span class="sr-only"> star reviews</span></p>
+                  <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
+                    <div class="relative ml-1 flex-1">
+                      <div class="h-1 rounded-full border border-gray-200 bg-gray-200"></div>
+                      <div style="width: calc(199 / 1624 * 100%)" class="absolute inset-y-0 rounded-full border border-black bg-black"></div>
+                    </div>
+                  </div>
+                </dt>
+              </div>
+              <div class="flex items-center text-xs">
+                <dt class="flex flex-1 items-center">
+                  <p class="w-3 font-medium text-gray-900">1<span class="sr-only"> star reviews</span></p>
+                  <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
+                    <div class="relative ml-1 flex-1">
+                      <div class="h-1 rounded-full border border-gray-200 bg-gray-200"></div>
+                      <div style="width: calc(147 / 1624 * 100%)" class="absolute inset-y-0 rounded-full border border-black bg-black"></div>
+                    </div>
+                  </div>
+                </dt>
+              </div>
+            </dl>
+          </div>
+          
+        </div>
+
+        <div class="ps-2 sm:ps-4 lg:ps-6">
+          <h4 class="text-sm font-medium">Cleanliness</h4>
+          <p class="text-lg font-medium">4.8</p>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 32 32" 
+            aria-hidden="true" 
+            role="presentation" 
+            focusable="false"
+            class="block h-8 w-8 fill-current mt-6"
+          >
+            <path d="M24 0v6h-4.3c.13 1.4.67 2.72 1.52 3.78l.2.22-1.5 1.33a9.05 9.05 0 0 1-2.2-5.08c-.83.38-1.32 1.14-1.38 2.2v4.46l4.14 4.02a5 5 0 0 1 1.5 3.09l.01.25.01.25v8.63a3 3 0 0 1-2.64 2.98l-.18.01-.21.01-12-.13A3 3 0 0 1 4 29.2L4 29.02v-8.3a5 5 0 0 1 1.38-3.45l.19-.18L10 12.9V8.85l-4.01-3.4.02-.7A5 5 0 0 1 10.78 0H11zm-5.03 25.69a8.98 8.98 0 0 1-6.13-2.41l-.23-.23A6.97 6.97 0 0 0 6 21.2v7.82c0 .51.38.93.87 1H7l11.96.13h.13a1 1 0 0 0 .91-.88l.01-.12v-3.52c-.34.04-.69.06-1.03.06zM17.67 2H11a3 3 0 0 0-2.92 2.3l-.04.18-.01.08 3.67 3.1h2.72l.02-.1a4.29 4.29 0 0 1 3.23-3.4zM30 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-3-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-5 0h-2.33v2H22zm8-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM20 20.52a3 3 0 0 0-.77-2l-.14-.15-4.76-4.61v-4.1H12v4.1l-5.06 4.78a3 3 0 0 0-.45.53 9.03 9.03 0 0 1 7.3 2.34l.23.23A6.98 6.98 0 0 0 20 23.6z"></path>
+          </svg>
+        </div>
+
+        <div class="ps-2 sm:ps-4 lg:ps-6 ">
+          <h4 class="text-sm font-medium">Accuracy</h4>
+          <p class="text-lg font-medium">4.8</p>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 32 32" 
+            aria-hidden="true" 
+            role="presentation" 
+            focusable="false"
+            class="block h-8 w-8 fill-current mt-6"
+          >
+            <path d="M16 1a15 15 0 1 1 0 30 15 15 0 0 1 0-30zm0 2a13 13 0 1 0 0 26 13 13 0 0 0 0-26zm7 7.59L24.41 12 13.5 22.91 7.59 17 9 15.59l4.5 4.5z"></path>
+          </svg>
+        </div>
+
+        <div class="ps-2 sm:ps-4 lg:ps-6 ">
+          <h4 class="text-sm font-medium">Check-in</h4>
+          <p class="text-lg font-medium">4.8</p>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 32 32" 
+            aria-hidden="true" 
+            role="presentation" 
+            focusable="false"
+            class="block h-8 w-8 fill-current mt-6"
+          >
+            <path d="M16.84 27.16v-3.4l-.26.09c-.98.32-2.03.51-3.11.55h-.7A11.34 11.34 0 0 1 1.72 13.36v-.59A11.34 11.34 0 0 1 12.77 1.72h.59c6.03.16 10.89 5.02 11.04 11.05V13.45a11.3 11.3 0 0 1-.9 4.04l-.13.3 7.91 7.9v5.6H25.7l-4.13-4.13zM10.31 7.22a3.1 3.1 0 1 1 0 6.19 3.1 3.1 0 0 1 0-6.2zm0 2.06a1.03 1.03 0 1 0 0 2.06 1.03 1.03 0 0 0 0-2.06zM22.43 25.1l4.12 4.13h2.67v-2.67l-8.37-8.37.37-.68.16-.3c.56-1.15.9-2.42.96-3.77v-.64a9.28 9.28 0 0 0-9-9h-.55a9.28 9.28 0 0 0-9 9v.54a9.28 9.28 0 0 0 13.3 8.1l.3-.16 1.52-.8v4.62z"></path>
+          </svg>
+        </div>
+
+        <div class="ps-2 sm:ps-4 lg:ps-6 ">
+          <h4 class="text-sm font-medium">Communication</h4>
+          <p class="text-lg font-medium">4.9</p>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 32 32" 
+            aria-hidden="true" 
+            role="presentation" 
+            focusable="false" 
+            class="block h-8 w-8 fill-none stroke-current stroke-2 mt-6 overflow-visible"
+          >
+            <path fill="none" d="M26 3a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-6.32L16 29.5 12.32 25H6a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z"></path>
+          </svg>
+        </div>
+
+        <div class="ps-2 sm:ps-4 lg:ps-6 ">
+          <h4 class="text-sm font-medium">Location</h4>
+          <p class="text-lg font-medium">4.7</p>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 32 32" 
+            aria-hidden="true" 
+            role="presentation" 
+            focusable="false"
+            class="block h-8 w-8 fill-current mt-6"
+          >
+            <path d="M30.95 3.81a2 2 0 0 0-2.38-1.52l-7.58 1.69-10-2-8.42 1.87A1.99 1.99 0 0 0 1 5.8v21.95a1.96 1.96 0 0 0 .05.44 2 2 0 0 0 2.38 1.52l7.58-1.69 10 2 8.42-1.87A1.99 1.99 0 0 0 31 26.2V4.25a1.99 1.99 0 0 0-.05-.44zM12 4.22l8 1.6v21.96l-8-1.6zM3 27.75V5.8l-.22-.97.22.97 7-1.55V26.2zm26-1.55-7 1.55V5.8l7-1.55z"></path>
+          </svg>
+        </div>
+
+        <div class="ps-2 sm:ps-4 lg:ps-6 ">
+          <h4 class="text-sm font-medium">Value</h4>
+          <p class="text-lg font-medium">4.9</p>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 32 32" 
+            aria-hidden="true" 
+            role="presentation" 
+            focusable="false"
+            class="block h-8 w-8 fill-current mt-6"
+          >
+            <path d="M16.17 2a3 3 0 0 1 1.98.74l.14.14 11 11a3 3 0 0 1 .14 4.1l-.14.14L18.12 29.3a3 3 0 0 1-4.1.14l-.14-.14-11-11A3 3 0 0 1 2 16.37l-.01-.2V5a3 3 0 0 1 2.82-3h11.35zm0 2H5a1 1 0 0 0-1 .88v11.29a1 1 0 0 0 .2.61l.1.1 11 11a1 1 0 0 0 1.31.08l.1-.08L27.88 16.7a1 1 0 0 0 .08-1.32l-.08-.1-11-11a1 1 0 0 0-.58-.28L16.17 4zM9 6a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+          </svg>
+        </div>
+      </div>
+    <%end %>
+  </section>
+
+  <!-- Review items-->
+  <section aria-labelledby="reviews-items" class="border-t border-gray-200 pt-10 lg:pt-16">
+    <div class="space-y-10">
+      <div class="flex flex-col sm:flex-row">
+        <div class="order-2 mt-6 sm:ml-16 sm:mt-0">
+          <h3 class="text-sm font-medium text-gray-900">This is the best white t-shirt out there</h3>
+          <p class="sr-only">5 out of 5 stars</p>
+
+          <div class="mt-3 space-y-6 text-sm text-gray-600">
+            <p>I've searched my entire life for a t-shirt that reflects every color in the visible spectrum. Scientists said it couldn't be done, but when I look at this shirt, I see white light bouncing right back into my eyes. Incredible!</p>
+          </div>
+        </div>
+
+        <div class="order-1 flex items-center sm:flex-col sm:items-start">
+          <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixqx=oilqXxSqey&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Mark Edwards." class="h-12 w-12 rounded-full">
+
+          <div class="ml-4 sm:ml-0 sm:mt-4">
+            <p class="text-sm font-medium text-gray-900">Mark Edwards</p>
+            <div class="mt-2 flex items-center">
+              <!-- Active: "text-gray-900", Default: "text-gray-200" -->
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row">
+        <div class="order-2 mt-6 sm:ml-16 sm:mt-0">
+          <h3 class="text-sm font-medium text-gray-900">Adds the perfect variety to my wardrobe</h3>
+          <p class="sr-only">4 out of 5 stars</p>
+
+          <div class="mt-3 space-y-6 text-sm text-gray-600">
+            <p>I used to be one of those unbearable minimalists who only wore the same black v-necks every day. Now, I have expanded my wardrobe with three new crewneck options! Leaving off one star only because I wish the heather gray was more gray.</p>
+          </div>
+        </div>
+
+        <div class="order-1 flex items-center sm:flex-col sm:items-start">
+          <img src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80" alt="Blake Reid." class="h-12 w-12 rounded-full">
+
+          <div class="ml-4 sm:ml-0 sm:mt-4">
+            <p class="text-sm font-medium text-gray-900">Blake Reid</p>
+            <div class="mt-2 flex items-center">
+              <!-- Active: "text-gray-900", Default: "text-gray-200" -->
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-200 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row">
+        <div class="order-2 mt-6 sm:ml-16 sm:mt-0">
+          <h3 class="text-sm font-medium text-gray-900">All good things come in 6-Packs</h3>
+          <p class="sr-only">5 out of 5 stars</p>
+
+          <div class="mt-3 space-y-6 text-sm text-gray-600">
+            <p>Tasty beverages, strong abs that will never be seen due to aforementioned tasty beverages, and these Basic Tees!</p>
+          </div>
+        </div>
+
+        <div class="order-1 flex items-center sm:flex-col sm:items-start">
+          <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Ben Russel." class="h-12 w-12 rounded-full">
+
+          <div class="ml-4 sm:ml-0 sm:mt-4">
+            <p class="text-sm font-medium text-gray-900">Ben Russel</p>
+            <div class="mt-2 flex items-center">
+              <!-- Active: "text-gray-900", Default: "text-gray-200" -->
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
