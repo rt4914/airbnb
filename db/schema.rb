@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_08_051424) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_08_055755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_051424) do
     t.integer "bathroom_count", default: 0
   end
 
+  create_table "property_amenities", force: :cascade do |t|
+    t.bigint "property_id", null: false
+    t.bigint "amenity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amenity_id", "property_id"], name: "index_property_amenities_on_amenity_id_and_property_id", unique: true
+    t.index ["amenity_id"], name: "index_property_amenities_on_amenity_id"
+    t.index ["property_id"], name: "index_property_amenities_on_property_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "property_id", null: false
@@ -139,6 +149,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_051424) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "property_amenities", "amenities"
+  add_foreign_key "property_amenities", "properties"
   add_foreign_key "reservations", "properties"
   add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "properties"
