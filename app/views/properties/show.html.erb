@@ -259,7 +259,7 @@
         </form>
       </div>
 
-      <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
+      <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pr-8">
         <!-- Description and details -->
         <div class="border-t border-gray-200 pt-10 mt-4">
           <h3 class="sr-only">Description</h3>
@@ -275,6 +275,9 @@
           </div>
         </div>
       </div>
+
+      <!-- Amenities -->
+      <%= render :partial => 'properties/amenities', :locals => {:amenities => @property.amenities} %>
     </div>
 
     <!-- Reviews -->

@@ -1,0 +1,20 @@
+<div class="lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pr-8">
+  <!-- Description and details -->
+  <div class="border-t border-gray-200 pt-10 mt-4">
+    <h2 class="text-xl font-medium leading-6 text-gray-900">What this place offers</h2>
+
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2">
+      <% amenities.limit(8).each do|amenity| %>
+        <div class="py-2 flex">
+
+          <%= image_tag "amenity_icons/#{amenity.icon}", class:"w-6 h-6" %>
+          <p class="ms-4 font-light"><%= amenity.name %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <% if (amenities.count > 6) %>
+      <button type="button" class="mt-8 rounded-md bg-white px-4 py-3 text-sm font-medium text-gray-900 text-lg ring-1 ring-inset ring-black hover:bg-gray-50">Show all <%= amenities.count %> amenities</button>
+    <% end %>
+  </div>
+</div>

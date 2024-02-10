@@ -35,7 +35,7 @@ amenities_data = [
   {name: 'Hot water', icon: "hot_water.svg"},
   {name: 'Iron', icon: "iron.svg"},
   {name: 'Kitchen', icon: "kitchen.svg", description: 'Space where guests can cook their own meals'},
-  {name: 'Lockbox', icon: "Lockbox.svg"},
+  {name: 'Lockbox', icon: "lockbox.svg"},
   {name: 'Microwave', icon: "microwave.svg"},
   {name: 'Mountain view', icon: "mountain_view.svg"},
   {name: 'Oven', icon: "oven.svg"},
@@ -50,8 +50,7 @@ amenities_data = [
 ]
 
 amenities_data.each do |data|
-  amenity = Amenity.create!(name: data[:name], description: data[:description])
-  amenity.icon.attach(io: File.open("app/assets/images/amenity_icons/#{data[:icon]}"), filename: amenity.name)
+  amenity = Amenity.create!(name: data[:name], icon: data[:icon], description: data[:description])
 end
 
 pictures = []
