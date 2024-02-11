@@ -1,11 +1,13 @@
 <div
-  id="modal-wrapper"
+  id="modal-<%= modalTriggerId %>-wrapper"
   data-controller="modal"
   class="hidden relative z-10" 
-  aria-labelledby="modal-title" 
+  aria-labelledby="modal-title"
+  data-modal-trigger-id="<%= modalTriggerId %>"
   role="dialog" 
   aria-modal="true"
 >
+  <div class="hidden" id="<%= modalTriggerId %>" data-action="click->modal#toggleModal"></div>
   <!--
     Background backdrop, show/hide based on modal state.
 

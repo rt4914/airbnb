@@ -267,10 +267,16 @@
           <div class="space-y-6">
             <p class="text-base text-gray-900"><%= @property.description.to_plain_text.truncate(400) %></p>
             <% if @property.description.to_plain_text.length > 400 %>
-              <div class="flex items-center gap-1">
+              <div 
+                class="flex items-center gap-1"
+                data-controller="description"
+                data-action="click->description#toggleDescriptionModal"
+              >
                 <span class="font-medium underline">Show more</span>
                 <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 12px; width: 12px; display: block; fill: var(--f-k-smk-x);"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
               </div>
+
+              <%= render 'shared/modal', modalTriggerId: "description", content: 'properties/description_modal' %>
             <% end %>
           </div>
         </div>
@@ -282,6 +288,5 @@
 
     <!-- Reviews -->
     <%= render :partial => 'properties/reviews', :locals => {:property => @property} %>
-
   </main>
 </div>

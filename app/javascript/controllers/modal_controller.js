@@ -1,16 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
-import {enter, leave, toggle} from 'el-transition'
+import {toggle} from 'el-transition'
 
 export default class extends Controller {
   connect () {
   }
 
-  show(){
-    enter(document.getElementById("modal-wrapper"));
-  }
-
-  hide(){
-    leave(document.getElementById("modal-wrapper"));
+  toggleModal(){
+    const modalTriggerId = this.element.dataset.modalTriggerId;
+    console.log("modalTriggerId: ", modalTriggerId)
+    console.log("wrapper: " + document.getElementById(`modal-${modalTriggerId}-wrapper`))
+    toggle(document.getElementById(`modal-${modalTriggerId}-wrapper`));
   }
 }
 

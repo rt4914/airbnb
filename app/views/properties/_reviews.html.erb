@@ -183,8 +183,8 @@
       <% if (property.reviews_count > 6) %>
         <button 
           type="button" 
-          data-controller="modal"
-          data-action="click->modal#show"
+          data-controller="reviews"
+          data-action="click->reviews#toggleReviewsModal"
           class="rounded-md bg-white px-4 py-3 text-sm font-medium text-gray-900 text-lg ring-1 ring-inset ring-black hover:bg-gray-50"
         >
           Show all reviews
@@ -194,4 +194,4 @@
   </section>
 </div>
 
-<%= render 'shared/modal', content: 'properties/reviews_modal' %>
+<%= render 'shared/modal', modalTriggerId: "reviews", content: 'properties/reviews_modal' %>

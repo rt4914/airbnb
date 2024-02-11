@@ -16,8 +16,8 @@
     <% if (amenities.count > 6) %>
       <button
         type="button" 
-        data-controller="modal"
-        data-action="click->modal#show"
+        data-controller="amenities"
+        data-action="click->amenities#toggleAmenitiesModal"
         class="mt-8 rounded-md bg-white px-4 py-3 text-sm font-medium text-gray-900 text-lg ring-1 ring-inset ring-black hover:bg-gray-50"
       >
         Show all <%= amenities.count %> amenities
@@ -26,4 +26,4 @@
   </div>
 </div>
 
-<%= render 'shared/modal', content: 'properties/amenities_modal' %>
+<%= render 'shared/modal', modalTriggerId: "amenities", content: 'properties/amenities_modal' %>
