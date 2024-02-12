@@ -4,7 +4,11 @@
     <div class="flex justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 py-2">
       <h1 class="inline text-2xl font-medium leading-7 text-gray-900 sm:truncate"><%= @property.headline %></h1>
       <div class="space-x-1">
-        <span class="px-3 pt-2 pb-3 hover:rounded-md hover:bg-gray-100 cursor-pointer">
+        <span 
+          data-controller="share"
+          data-action="click->share#toggleShareModal"
+          class="px-3 pt-2 pb-3 hover:rounded-md hover:bg-gray-100 cursor-pointer"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: inline; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;"><g fill="none"><path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9M16 3v23V3zM6 13l9.3-9.3a1 1 0 0 1 1.4 0L26 13"></path></g></svg>
           <span class="underline text-sm ms-1">Share</span>
         </span>
@@ -276,7 +280,7 @@
                 <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 12px; width: 12px; display: block; fill: var(--f-k-smk-x);"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
               </div>
 
-              <%= render 'shared/modal', modalTriggerId: "description", content: 'properties/description_modal' %>
+              <%= render 'shared/modal', modalTriggerId: "description", content: 'properties/description_modal', content_params: {description: @property.description} %>
             <% end %>
           </div>
         </div>
@@ -290,3 +294,5 @@
     <%= render :partial => 'properties/reviews', :locals => {:property => @property} %>
   </main>
 </div>
+
+<%= render 'shared/modal', modalTriggerId: "share", content: 'properties/share_modal', content_params: { property: @property } %>

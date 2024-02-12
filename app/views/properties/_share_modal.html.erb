@@ -1,0 +1,71 @@
+<div 
+  data-controller="share-modal"
+  data-share-url="<%= url_for(only_path: false) %>"
+>
+	<button data-action="click->modal#toggleModal" type="button" class="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+    <span class="absolute -inset-2.5"></span>
+    <span class="sr-only">Close panel</span>
+    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <h2 class="text-2xl font-medium leading-6 text-gray-900 mx-6 mt-6" id="modal-title">Share this place</h2>
+	
+  <div class="m-6">
+    <div class="flex items-center">
+      <%= image_tag content_params[:property].images[0], class:"w-16 h-16 object-cover rounded-md"%>
+      <div class="ml-3 text-black font-light">
+        <%= content_params[:property].name %> - <%= content_params[:property].city %>, <%= content_params[:property].state %>
+         · 
+        <span class="inline-flex items-center pointer-events-none block text-sm font-light text-black">
+          <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 12px; width: 12px; fill: currentcolor;">
+            <path fill-rule="evenodd" d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"></path>
+          </svg>
+          <%= content_params[:property].average_final_rating.round(2) %>
+        </span>
+      </div>
+    </div>
+
+    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div data-action="click->share-modal#copyLink" class="cursor-pointer relative flex items-center space-x-6 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 hover:bg-gray-100">
+        <svg class="rounded" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;"><path d="M25 5a4 4 0 0 1 4 4v17a5 5 0 0 1-5 5H12a5 5 0 0 1-5-5V10a5 5 0 0 1 5-5h13zm0 2H12a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V9a2 2 0 0 0-2-2zm-3-6v2H11a6 6 0 0 0-6 5.78V22H3V9a8 8 0 0 1 7.75-8H22z"></path></svg>
+        <span class="font-medium">Copy Link</span>
+      </div>
+
+      <div data-action="click->share-modal#emailShare" class="cursor-pointer relative flex items-center space-x-6 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 hover:bg-gray-100">
+        <svg class="rounded" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 32px; width: 32px; stroke: currentcolor; stroke-width: 2; overflow: visible;"><g fill="none"><rect width="28" height="24" x="2" y="4" rx="4"></rect><path d="m3 6 10.42 8.81a4 4 0 0 0 5.16 0L29 6"></path></g></svg>
+        <span class="font-medium">Email</span>
+      </div>
+
+      <div data-action="click->share-modal#messagesShare" class="cursor-pointer relative flex items-center space-x-6 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 hover:bg-gray-100">
+        <svg class="rounded" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px;"><defs><linearGradient id="a" x1="50.79%" x2="50.79%" y1="93.36%" y2="12.41%"><stop offset="0%" stop-color="#0CBD2A"></stop><stop offset="100%" stop-color="#5BF675"></stop></linearGradient></defs><path fill="url(#a)" d="M2 0h28a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"></path><path fill="#FFF" d="M15.8 5.47c-6.4 0-11.6 4.32-11.6 9.66 0 3.39 2.14 6.52 5.63 8.27a9.16 9.16 0 0 1-2.02 2.83c1.71-.3 3.32-.93 4.7-1.85 1.07.27 2.18.4 3.29.4 6.4 0 11.6-4.32 11.6-9.65s-5.2-9.66-11.6-9.66z"></path></svg>
+        <span class="font-medium">Messages</span>
+      </div>
+
+      <div data-action="click->share-modal#whatsappShare" class="cursor-pointer relative flex items-center space-x-6 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 hover:bg-gray-100">
+        <svg class="rounded" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px;"><path fill="#25d366" d="M32 0v32H0V0z"></path><path fill="#FFF" d="m4 28 1.7-6.16a11.82 11.82 0 0 1-1.6-5.95C4.1 9.33 9.46 4 16.05 4a11.9 11.9 0 0 1 8.45 3.49A11.8 11.8 0 0 1 28 15.9a11.94 11.94 0 0 1-17.66 10.45zm6.63-3.8a9.93 9.93 0 0 0 15.35-8.3A9.9 9.9 0 0 0 16.05 6a9.92 9.92 0 0 0-9.93 9.9c0 2.22.65 3.88 1.75 5.63l-1 3.64 3.76-.98zm11.36-5.52c-.07-.13-.27-.2-.57-.35-.3-.15-1.75-.86-2.03-.96-.27-.1-.46-.15-.66.15s-.77.96-.94 1.15-.35.23-.65.08c-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.04s-.02-.46.13-.6l.44-.52c.15-.17.2-.3.3-.5.1-.2.05-.36-.02-.51-.08-.15-.67-1.6-.92-2.2-.24-.57-.48-.5-.66-.5l-.57-.01a1.09 1.09 0 0 0-.8.37c-.27.3-1.03 1.01-1.03 2.46s1.06 2.86 1.2 3.06c.16.2 2.1 3.18 5.08 4.45.7.3 1.26.5 1.69.63.7.22 1.36.19 1.87.11.57-.08 1.75-.71 2-1.4s.25-1.28.17-1.4z"></path></svg>
+        <span class="font-medium">WhatsApp</span>
+      </div>
+
+      <div data-action="click->share-modal#messengerShare" class="cursor-pointer relative flex items-center space-x-6 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 hover:bg-gray-100">
+        <svg class="rounded" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;"><path d="M25 5a4 4 0 0 1 4 4v17a5 5 0 0 1-5 5H12a5 5 0 0 1-5-5V10a5 5 0 0 1 5-5h13zm0 2H12a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V9a2 2 0 0 0-2-2zm-3-6v2H11a6 6 0 0 0-6 5.78V22H3V9a8 8 0 0 1 7.75-8H22z"></path></svg>
+        <span class="font-medium">Messenger</span>
+      </div>
+
+      <div data-action="click->share-modal#facebookShare" class="cursor-pointer relative flex items-center space-x-6 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 hover:bg-gray-100">
+        <svg class="rounded" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px;"><path fill="#1877F2" d="M32 0v32H0V0z"></path><path fill="#FFF" d="M22.94 16H18.5v-3c0-1.27.62-2.5 2.6-2.5h2.02V6.56s-1.83-.31-3.58-.31c-3.65 0-6.04 2.21-6.04 6.22V16H9.44v4.63h4.06V32h5V20.62h3.73l.7-4.62z"></path></svg>
+        <span class="font-medium">Facebook</span>
+      </div>
+
+      <div data-action="click->share-modal#twitterShare" class="cursor-pointer relative flex items-center space-x-6 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 hover:bg-gray-100">
+        <svg class="rounded" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px;"><path fill="#1DA1F2" d="M0 0h32v32H0z"></path><path fill="#FFF" d="M18.66 7.99a4.5 4.5 0 0 0-2.28 4.88A12.31 12.31 0 0 1 7.3 8.25a4.25 4.25 0 0 0 1.38 5.88c-.69 0-1.38-.13-2-.44a4.54 4.54 0 0 0 3.5 4.31 4.3 4.3 0 0 1-2 .06 4.64 4.64 0 0 0 4.18 3.13A8.33 8.33 0 0 1 5.82 23a12.44 12.44 0 0 0 19.31-11.19 7.72 7.72 0 0 0 2.2-2.31 8.3 8.3 0 0 1-2.5.75 4.7 4.7 0 0 0 2-2.5c-.88.5-1.82.88-2.82 1.06A4.5 4.5 0 0 0 18.66 8z"></path></svg>
+        <span class="font-medium">Twitter</span>
+      </div>
+
+      <div data-action="click->share-modal#embedLink" class="cursor-pointer relative flex items-center space-x-6 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400 hover:bg-gray-100">
+        <svg class="rounded" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;"><path d="m18.35 4.19 1.92.55-6.62 23.07-1.92-.55zm4.21 1.96 8.3 8.29.11.13a2 2 0 0 1-.12 2.7l-8.29 8.3-1.41-1.42 8.29-8.3-8.3-8.29zm-13.12 0 1.41 1.41-8.29 8.3 8.3 8.29-1.42 1.41-8.3-8.3a2 2 0 0 1-.11-2.7l.12-.12 8.29-8.3z"></path></svg>
+        <span class="font-medium">Embed</span>
+      </div>
+    </div>
+	</div>
+</div>

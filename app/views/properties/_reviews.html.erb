@@ -187,11 +187,11 @@
           data-action="click->reviews#toggleReviewsModal"
           class="rounded-md bg-white px-4 py-3 text-sm font-medium text-gray-900 text-lg ring-1 ring-inset ring-black hover:bg-gray-50"
         >
-          Show all reviews
+          Show all <%= property.reviews_count %> reviews
         </button>
       <% end %>
     </div>
   </section>
 </div>
 
-<%= render 'shared/modal', modalTriggerId: "reviews", content: 'properties/reviews_modal' %>
+<%= render 'shared/modal', modalTriggerId: "reviews", content: 'properties/reviews_modal', content_params: {property: property} %>
