@@ -110,7 +110,8 @@
               name="checkin" 
               id="checkin" 
               class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-              placeholder="18/02/2024"
+              value="<%= Date.tomorrow.strftime('%Y-%m-%d') %>"
+              data-booking-target="checkin"
               >
           </div>
 
@@ -121,7 +122,8 @@
               name="checkout" 
               id="checkout" 
               class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-              placeholder="22/02/2024"
+              value="<%= (Date.tomorrow + 1.day).strftime('%Y-%m-%d') %>"
+              data-booking-target="checkout"
               >
           </div>
 
