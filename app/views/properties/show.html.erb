@@ -99,6 +99,7 @@
         class="mt-4 lg:mt-0 border rounded-xl p-6 shadow-xl h-auto"
         data-controller="booking"
         data-per-night-price="<%= humanized_money(@property.price) %>"
+        data-blocked-dates="<%= @blocked_dates %>"
         >
         <h2 class="sr-only">Booking information</h2>
         <p class="text-lg font-light tracking-tight text-gray-900"><span class="text-2xl font-semibold"><%= humanized_money_with_symbol(@property.price) %></span> night</p>

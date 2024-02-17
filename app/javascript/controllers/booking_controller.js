@@ -6,9 +6,14 @@ export default class extends Controller {
 
   SERVICE_FEE_PERCENTAGE  = 0.18;
 
+  disableDates = [];
+
   connect() {
+    this.formatBlockedDates();
+
     flatpickr(this.checkinTarget, {
       minDate: new Date().fp_incr(1),
+      disable: this.disableDates,
       onChange: (selectedDates, dateStr, instance) => {
         this.triggerCheckoutDatePicker(selectedDates);
       },
@@ -20,12 +25,26 @@ export default class extends Controller {
   triggerCheckoutDatePicker(selectedDates){
     flatpickr(this.checkoutTarget, {
       minDate: new Date(selectedDates).fp_incr(1),
+      disable: this.disableDates,
       onChange: (selectedDates, dateStr, instance) => {
         this.updateDetails();
       },
     });
 
     this.checkoutTarget.click();
+  }
+
+  formatBlockedDates() {
+    const blockedDates = JSON.parse(this.element.dataset.blockedDates)
+    for(let i = 0; i < blockedDates.length; i++){
+      const dates = blockedDates[i];
+      this.disableDates.push(
+        {
+          from: dates[0], // checkin-date
+          to: dates[1], // checkout-date
+        }
+      )
+    }
   }
 
   updateDetails(){
