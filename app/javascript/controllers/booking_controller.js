@@ -81,8 +81,8 @@ export default class extends Controller {
     e.preventDefault();
 
     const paramsData = {
-      checkin_date: "20-02-2024",
-      checkout_date: "22-02-2024",
+      checkin_date: this.checkinTarget.value,
+      checkout_date: this.checkoutTarget.value,
     }
 
     const paramsURL = (new URLSearchParams(paramsData)).toString();
