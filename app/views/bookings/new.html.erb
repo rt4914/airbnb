@@ -1,8 +1,85 @@
-<p><%= @checkin_date  %></p>
-<p><%= @checkout_date  %></p>
-<p><%= @total_nights %></p>
-<p><%= @base_fair %></p>
-<p><%= @service_fee %></p>
-<p><%= @total_amount %></p>
+<div class="bg-white">
+  <main class="pt-4 pb-16">
+    <div class="mx-auto max-w-2xl px-4 pt-8 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:grid-rows-[auto,auto,1fr] lg:gap-x-24 lg:px-8">
+      <div class="lg:col-span-2">
+        <h2 class="text-3xl font-medium leading-6 text-gray-900">Confirm and pay</h2>
 
-<p><%= @property.name %></p>
+        <div class="mt-12">
+          <h3 class="text-2xl font-medium text-gray-900">Your trip</h3>
+          <div class="flex justify-between mt-4">
+            <p class="font-medium">Dates</p>
+            <p class="font-medium"><%= @checkin_date.strftime('%e %b') %> - <%= @checkout_date.strftime('%e %b') %></p>
+          </div>
+        </div>
+
+        <div class="mt-12 border-t border-gray-300 pt-12">
+          <h3 class="text-2xl font-medium text-gray-900">Pay with</h3>
+        </div>
+
+        <div class="mt-12 border-t border-gray-300 pt-12">
+          <h3 class="text-2xl font-medium text-gray-900">Ground rules</h3>
+          <p class="mt-6 font-light">We ask every guest to remember a few simple things about what makes a great guest.</p>
+          <ul class="font-light list-disc ms-4 mt-4">
+            <li>
+              Follow the house rules
+            </li>
+            <li>
+              Treat your Host's home like your own
+            </li>
+          </ul>
+        </div>
+
+
+        <button
+          type="submit"
+          class="mt-12 flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          Confirm and pay
+        </button>
+      </div>
+
+      <div class="mt-4 lg:mt-0 border border-gray-300 lg:col-span-2 rounded-xl p-6 h-min">
+        <h2 class="sr-only">Booking information</h2>
+
+        <div class="flex items-center">
+          <%= image_tag @property.images[0], class:"w-24 h-24 object-cover rounded-md"%>
+          <div class="ml-3 text-black font-medium">
+            <div class=><%= @property.name %> - <%= @property.city %>, <%= @property.state %></div>
+            <span class="inline-flex items-center pointer-events-none block text-sm text-black mt-2">
+              <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 12px; width: 12px; fill: currentcolor;">
+                <path fill-rule="evenodd" d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"></path>
+              </svg>
+              <%= @property.average_final_rating.round(2) %> (<%= @property.reviews_count %> reviews)
+            </span>
+          </div>
+        </div>
+
+        <div class="relative py-6">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-medium text-gray-900">Price details</h3>
+          <div class="flex justify-between font-light mt-6">
+            <p><%= humanized_money_with_symbol(@property.price) %> x <%= @total_nights %> night</p>
+            <p><%= humanized_money_with_symbol(@base_fare) %></p>
+          </div>
+          <div class="flex justify-between font-light mt-4">
+            <p>Airbnb service fee</p>
+            <p><%= humanized_money_with_symbol(@service_fee) %></p>
+          </div>
+        </div>
+        <div class="relative py-6">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+        </div>
+        <div class="flex justify-between font-medium">
+          <p>Total</p>
+          <p><%= humanized_money_with_symbol(@total_amount) %></p>
+        </div>
+      </div>
+  </main>
+</div>
