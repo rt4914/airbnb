@@ -16,12 +16,14 @@ gem "rails", "~> 7.0.8"
 gem "redis", "~> 4.0"
 gem "sprockets-rails"
 gem "stimulus-rails"
+gem 'stripe-rails'
 gem "tailwindcss-rails", "~> 2.3"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'dotenv'
 end
 
 group :development do
