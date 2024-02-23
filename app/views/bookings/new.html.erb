@@ -14,7 +14,18 @@
 
         <div class="mt-12 border-t border-gray-300 pt-12">
           <h3 class="text-2xl font-medium text-gray-900">Pay with</h3>
-          <%= stripe_elements_tag submit_path: root_path %>
+          <%= stripe_elements_tag(
+              submit_path: booking_payments_path(
+                property_id: @property.id,
+                user_id: current_user.id,
+                checkin_date: @checkin_date,
+                checkout_date: @checkout_date,
+                base_fare: @base_fare,
+                service_fee: @service_fee,
+                total_amount: @total_amount
+              )
+            )
+           %>
         </div>
 
         <div class="mt-12 border-t border-gray-300 pt-12">
