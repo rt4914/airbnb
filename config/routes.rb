@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   end
 
   resources :booking_payments, only: [:create]
+
+  get "booking_payments/success", to: "booking_payments#success"
 end
