@@ -1,0 +1,69 @@
+<%= link_to property_path(property) do %>
+  <div class="group relative cursor-pointer ">
+    <div class="relative overflow-hidden rounded-md bg-gray-200">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <% property.images.each do |image| %>
+            <%= image_tag image, class:"swiper-slide h-full w-full object-cover object-center lg:h-full lg:w-full" %>
+          <% end %>
+        </div>
+        
+        <%# TODO: Swiper buttons are not working %>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+
+      <div class="absolute z-10 right-0 top-0 m-4">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 32 32" 
+          aria-hidden="true" 
+          role="presentation" 
+          focusable="false"
+          class="block h-6 w-6 stroke-white stroke-2 <%= property.wishlisted_by?(current_user) ? 'fill-primary' : 'fill-none' %>"
+          style="overflow: visible;"
+          data-controller="wishlist"
+          data-user-logged-in="<%= user_signed_in? %>"
+          data-property-id="<%= property.id %>"
+          data-user-id="<%= current_user&.id %>"
+          data-wishlist-id="<%= property.wishlists.find_by(user: current_user)&.id %>"
+          data-action="click->wishlist#updateWishlistStatus"
+          data-wishlist-target="icon"
+          data-status="<%= property.wishlisted_by?(current_user) %>"
+          >
+            <path d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="mt-2">
+      <div class="flex justify-between">
+        <h3 class="text-base font-medium text-gray-700">
+          <%= property.city %>, <%= property.country %>
+        </h3>
+        <p class="flex items-center text-sm font-light">
+          <svg
+            class="mr-1 block w-3 h-3 fill-current"
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 32 32" 
+            aria-hidden="true" 
+            role="presentation" 
+            focusable="false" 
+          >
+            <path fill-rule="evenodd" d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"></path>
+          </svg>
+          <%= (property.average_final_rating).round(2) %> (<%= (property.reviews_count) %>)
+        </p>
+      </div>
+      <%# TODO: Add distance from property based on location %>
+      <% if minimal_details %>
+        <p class="mt-0.5 text-sm text-gray-500"><%= property.bed_count %> beds</p>
+      <% else %>
+        <p class="mt-0.5 text-sm text-gray-500"><%= property.available_dates.first %> - <%= property.available_dates.last %></p>
+        <p class="mt-0.5 text-sm font-light text-black">
+          <span class="font-medium"><%= humanized_money_with_symbol(property.price) %></span> night
+        </p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

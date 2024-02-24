@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :booking_payments, only: [:create]
 
   get "booking_payments/success", to: "booking_payments#success"
+
+  resources :wishlists, only: [:index]
 end
