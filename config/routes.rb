@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   resources :wishlists, only: [:index]
 
   resources :profiles, only: [:show]
+
+  resources :reservations, only: [:show]
 end
