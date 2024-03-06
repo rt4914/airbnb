@@ -12,7 +12,7 @@
     <div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-        <div>
+        <div class="mt-4">
           <%= f.label :email, class:"block text-sm font-medium leading-6 text-gray-900" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6" %>
         </div>

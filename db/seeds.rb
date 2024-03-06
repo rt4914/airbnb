@@ -60,30 +60,42 @@ end
 
 user = User.create!({
   email: 'test1@gmail.com',
-  password: '123456',
+  password: '123456'
+})
+
+profile = Profile.create!({
   name: Faker::Lorem.unique.sentence(word_count: 3),
   address_1: Faker::Address.street_address,
   address_2: Faker::Address.street_name,
   city: Faker::Address.city,
   state: Faker::Address.state,
   country: Faker::Address.country,
+  user_id: user.id
 })
 
-user.picture.attach(io: pictures[0] , filename: user.name)
+profile.picture.attach(io: pictures[0], filename: profile.name)
 
 19.times do |i|
-  random_user = User.create!({
-    email: "test#{i + 2}@gmail.com",
-    password: '123456',
-    name: Faker::Lorem.unique.sentence(word_count: 3),
-    address_1: Faker::Address.street_address,
-    address_2: Faker::Address.street_name,
-    city: Faker::Address.city,
-    state: Faker::Address.state,
-    country: Faker::Address.country,
-  })
+  random_user = User.create!(
+    {
+      email: "test#{i + 2}@gmail.com",
+      password: '123456'
+    }
+  )
 
-  random_user.picture.attach(io: pictures[i+1] , filename: user.name)
+  random_profile = Profile.create!(
+    {
+      name: Faker::Lorem.unique.sentence(word_count: 3),
+      address_1: Faker::Address.street_address,
+      address_2: Faker::Address.street_name,
+      city: Faker::Address.city,
+      state: Faker::Address.state,
+      country: Faker::Address.country,
+      user_id: random_user.id
+    }
+  )
+
+  random_profile.picture.attach(io: pictures[i + 1], filename: random_profile.name)
 end
 
 6.times do |i|
