@@ -11,17 +11,17 @@ Rails.application.routes.draw do
     resources :wishlists, only: [:create, :destroy]
   end
 
-  resources :properties, only: [:show] do
-    resources :bookings, only: [:new]
+  resources :properties, only: :show do
+    resources :bookings, only: :new
   end
 
-  resources :booking_payments, only: [:create]
+  resources :booking_payments, only: :create
 
   get "booking_payments/success", to: "booking_payments#success"
 
-  resources :wishlists, only: [:index]
+  resources :wishlists, only: :index
 
-  resources :profiles, only: [:show]
+  resource :profile, only: :show
 
-  resources :reservations, only: [:show]
+  resources :reservations, only: :show
 end

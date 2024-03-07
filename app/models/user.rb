@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   after_create :new_profile
 
+  delegate :name, :address_1, :address_2, :city, :state, :country, :avatar, to: :profile
+
   def new_profile
     self.profile = Profile.new
     save!

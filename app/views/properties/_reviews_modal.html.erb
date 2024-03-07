@@ -147,10 +147,10 @@
           <% content_params[:property].reviews.each do |review| %>
             <div class="flex flex-col py-4">
               <div class="flex items-center">
-                <%= image_tag review.user.profile.picture, alt: review.user.profile.name, class:"h-12 w-12 rounded-full" %>
+                <%= avatar_for(review.user) %>
                 <div>
-                  <p class="text-base text-gray-900 ms-4"><%= review.user.profile.name %></p>
-                  <p class="text-xs text-gray-900 ms-4"><%= review.user.profile.city %>, <%= review.user.profile.country %></p>
+                  <p class="text-base text-gray-900 ms-4"><%= review.user.name %></p>
+                  <p class="text-xs text-gray-900 ms-4"><%= review.user.city %>, <%= review.user.country %></p>
                 </div>
               </div>
               <div class="mt-2 flex items-center">
