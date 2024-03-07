@@ -1,3 +1,5 @@
+require 'open-uri'
+
 description = <<-DESCRIPTION
 <div>Explore the nature and art oasis at our unique property. The living room, a cozy masterpiece, and the fully equipped kitchen are ideal for cooking and entertaining. Step outside to our garden patio, unwind, and enjoy morning birdsong. Tastefully decorated bedrooms, a powder room, and utility area complete the experience.<br />Note: The property is surrounded by a residential area. Despite initial surroundings, I am sure that, stepping in will fill your mood with joy and happiness.
 </div>
@@ -74,6 +76,7 @@ profile = Profile.create!({
 })
 
 profile.picture.attach(io: pictures[0], filename: profile.name)
+# user.avatar.attach(io: URI.parse(Faker::LoremFlickr.image).open, filename: "user_#{user.id}_avatar.jpg")
 
 19.times do |i|
   random_user = User.create!(
