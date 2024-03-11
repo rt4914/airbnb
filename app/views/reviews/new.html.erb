@@ -26,6 +26,23 @@
         </div>
       </div>
 
+      <div>
+        <%= form_with url: reservation_reviews_path() do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :property_id, value: @reservation.property_id %>
+          <%= f.hidden_field :content, value: "Rajat Talesra Review" %>
+
+          <%= f.hidden_field :cleanliness_rating, value: 4 %>
+          <%= f.hidden_field :accuracy_rating, value: 5 %>
+          <%= f.hidden_field :checkin_rating, value: 3 %>
+          <%= f.hidden_field :communication_rating, value: 5 %>
+          <%= f.hidden_field :location_rating, value: 4 %>
+          <%= f.hidden_field :value_rating, value: 2 %>
+
+          <%= f.submit "Submit Review" %>
+        <% end %>
+      </div>
+
     </div>
   </main>
 </div>
