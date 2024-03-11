@@ -26,46 +26,26 @@
         </div>
       </div>
 
-      <div>
+      <div class="max-w-96">
         <%= form_with url: reservation_reviews_path() do |f| %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :property_id, value: @reservation.property_id %>
 
           <div class="flex flex-col py-4">
-            <%= f.label :content %>
-            <%= f.text_area :content %>
+            <%= f.label :content, class:'block text-sm font-medium leading-6 text-gray-900' %>
+            <%= f.text_area :content, class:'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' %>
           </div>
 
           <div data-controller="rating">
-            <div class="flex flex-col py-4">
-              <%= f.label :cleanliness_rating %>
-              <div class="flex">
-                <%= f.hidden_field :cleanliness_rating, data: {"rating-target": "cleanliness_rating"} %>
-                <% 5.times do |i| %>
-                  <svg 
-                    class="fill-gray-300 h-6 w-6 flex-shrink-0" 
-                    viewBox="0 0 20 20" 
-                    fill="currentColor"
-                    aria-hidden="true"
-                    data-action="click->rating#setRating"
-                    data-category="cleanliness"
-                    data-rating="<%= i + 1 %>"
-                    data-rating-target="star"
-                  >
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                <% end %>
-              </div>
-            </div>
+            <%= render :partial => 'reviews/rating_item', :locals => {:f => f, category_rating: "cleanliness_rating"} %>
+            <%= render :partial => 'reviews/rating_item', :locals => {:f => f, category_rating: "accuracy_rating"} %>
+            <%= render :partial => 'reviews/rating_item', :locals => {:f => f, category_rating: "checkin_rating"} %>
+            <%= render :partial => 'reviews/rating_item', :locals => {:f => f, category_rating: "communication_rating"} %>
+            <%= render :partial => 'reviews/rating_item', :locals => {:f => f, category_rating: "location_rating"} %>
+            <%= render :partial => 'reviews/rating_item', :locals => {:f => f, category_rating: "value_rating"} %>
           </div>
 
-          <%= f.hidden_field :accuracy_rating, value: 5 %>
-          <%= f.hidden_field :checkin_rating, value: 3 %>
-          <%= f.hidden_field :communication_rating, value: 5 %>
-          <%= f.hidden_field :location_rating, value: 4 %>
-          <%= f.hidden_field :value_rating, value: 2 %>
-
-          <%= f.submit "Submit Review" %>
+          <%= f.submit "Submit Review", class:"cursor-pointer mt-4 flex items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" %>
         <% end %>
       </div>
 
