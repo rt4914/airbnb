@@ -132,17 +132,17 @@ end
     end
   end
 
-  ((5..10).to_a.sample).times do
-    Review.create!({
-      content: Faker::Lorem.paragraph(sentence_count: 10),
-      cleanliness_rating: (1..5).to_a.sample,
-      accuracy_rating: (1..5).to_a.sample,
-      checkin_rating: (1..5).to_a.sample,
-      communication_rating: (1..5).to_a.sample,
-      location_rating: (1..5).to_a.sample,
-      value_rating: (1..5).to_a.sample,
-      property: property,
-      user: User.all.sample
-    })
-  end
+  # ((5..10).to_a.sample).times do
+  #   Review.create!({
+  #     content: Faker::Lorem.paragraph(sentence_count: 10),
+  #     cleanliness_rating: (1..5).to_a.sample,
+  #     accuracy_rating: (1..5).to_a.sample,
+  #     checkin_rating: (1..5).to_a.sample,
+  #     communication_rating: (1..5).to_a.sample,
+  #     location_rating: (1..5).to_a.sample,
+  #     value_rating: (1..5).to_a.sample,
+  #     property: property,
+  #     user: User.all.sample
+  #   })
+  # end
 end

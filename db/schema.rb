@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_06_205129) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_12_083818) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,8 +99,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_205129) do
     t.datetime "updated_at", null: false
     t.integer "price_cents"
     t.string "price_currency"
-    t.integer "reviews_count"
-    t.decimal "average_final_rating"
+    t.integer "reviews_count", default: 0
+    t.decimal "average_final_rating", default: "0.0"
     t.integer "guest_count", default: 0
     t.integer "bedroom_count", default: 0
     t.integer "bed_count", default: 0

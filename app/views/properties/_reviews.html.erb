@@ -194,7 +194,7 @@
           </div>
         <% end %>
       </div>
-      <% if (property.reviews_count > 6) %>
+      <% if property.reviews_count > 6 %>
         <button 
           type="button" 
           data-controller="reviews"
@@ -208,4 +208,6 @@
   </section>
 </div>
 
-<%= render 'shared/modal', modalTriggerId: "reviews", content: 'properties/reviews_modal', content_params: {property: property} %>
+<% if property.reviews_count > 0 %>
+  <%= render 'shared/modal', modalTriggerId: "reviews", content: 'properties/reviews_modal', content_params: {property: property} %>
+<% end %>
