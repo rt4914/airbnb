@@ -6,6 +6,14 @@
       <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
 
       <%= form_with model: @profile, url: profile_path, class:'mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6' do |f| %>
+        <div class="col-span-full">
+          <%= f.label :picture, class:'block text-sm font-medium leading-6 text-gray-900' %>
+          <div class="flex gap-4 items-center">
+            <%= image_tag @profile.picture, class:"h-16 w-16 rounded-full" %>
+            <%= f.file_field :picture, class:'font-medum' %>
+          </div>
+        </div>
+
         <div class="sm:col-span-3">
           <%= f.label :name, class:'block text-sm font-medium leading-6 text-gray-900' %>
           <%= f.text_field :name, class: 'mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6' %>
