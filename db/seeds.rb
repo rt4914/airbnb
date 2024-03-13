@@ -54,7 +54,7 @@ amenities_data.each do |data|
 end
 
 pictures = []
-20.times do 
+10.times do 
   pictures << URI.parse(Faker::LoremFlickr.image).open
 end
 
@@ -69,12 +69,12 @@ user.profile.update!({
   address_2: Faker::Address.street_name,
   city: Faker::Address.city,
   state: Faker::Address.state,
-  country: Faker::Address.country
+  country_code: Faker::Address.country_code
 })
 
 user.profile.picture.attach(io: pictures[0], filename: user.profile.name)
 
-19.times do |i|
+9.times do |i|
   random_user = User.create!(
     {
       email: "test#{i + 2}@gmail.com",
@@ -89,7 +89,7 @@ user.profile.picture.attach(io: pictures[0], filename: user.profile.name)
       address_2: Faker::Address.street_name,
       city: Faker::Address.city,
       state: Faker::Address.state,
-      country: Faker::Address.country
+      country_code: Faker::Address.country_code
     }
   )
 
@@ -105,7 +105,7 @@ end
     address_2: Faker::Address.street_name,
     city: Faker::Address.city,
     state: Faker::Address.state,
-    country: Faker::Address.country,
+    country_code: Faker::Address.country_code,
     price: Money.from_amount((50..100).to_a.sample, 'USD'),
     bedroom_count: (2..5).to_a.sample,
     bed_count: (4..10).to_a.sample,

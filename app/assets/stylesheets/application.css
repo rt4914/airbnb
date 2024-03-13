@@ -14,6 +14,15 @@
  *= require_self
  */
 
+#profile_country_code {
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  height: 36px;
+  margin-top: 8px;
+  font-size: 14px;
+  padding-top: 6px;
+}
+
 .swiper {
   width: 100%;
   aspect-ratio: 1/1;
