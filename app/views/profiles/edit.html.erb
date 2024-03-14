@@ -9,7 +9,7 @@
         <div class="col-span-full">
           <%= f.label :picture, class:'block text-sm font-medium leading-6 text-gray-900' %>
           <div class="flex gap-4 items-center">
-            <%= image_tag @profile.picture, class:"h-16 w-16 rounded-full" %>
+            <%= image_tag @profile.picture, class:"h-16 w-16 rounded-full object-cover" %>
             <%= f.file_field :picture, class:'font-medum' %>
           </div>
         </div>

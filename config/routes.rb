@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   resources :wishlists, only: [:index]
 
   resource :profile, only: [:edit, :update]
+  
+  resource :email, only: [:edit, :update]
+  
+  resource :password, only: [:edit, :update]
 
   resources :reservations, only: [:index] do
     resources :reviews, only: [:new, :create]

@@ -52,7 +52,7 @@
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">Open user menu</span>
               <% if user_signed_in? && current_user.profile.picture.present? %>
-                <%= image_tag current_user.profile.picture, class:"h-8 w-8 rounded-full" %>
+                <%= image_tag current_user.profile.picture, class:"h-8 w-8 rounded-full object-cover" %>
               <% else %>
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 

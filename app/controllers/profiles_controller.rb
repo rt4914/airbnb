@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update!(profile_params)
-      redirect_to edit_profile_path, notice: 'Profile update successfully'
+      redirect_to edit_profile_path, notice: 'Profile updated successfully'
     else
       redirect_back fallback_location: edit_profile_path, alert: 'Failed to update profile'
     end
