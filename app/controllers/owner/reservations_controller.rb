@@ -3,7 +3,7 @@ module Owner
     before_action :authenticate_user!
     # TODO: Order- show latest first, same for other apis
     def index
-      @reservations = current_user.reservations
+      @reservations = current_user.properties.map(&:reservations).flatten
     end
   end
 end
