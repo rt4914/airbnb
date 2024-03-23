@@ -33,7 +33,11 @@ Rails.application.routes.draw do
 
   namespace :owner do
     resources :dashboard, only: :index
-    resources :properties
+    resources :properties do
+      member do
+        patch 'update_amenities'
+      end
+    end
     resources :reservations, only: :index
   end
 end

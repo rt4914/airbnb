@@ -63,13 +63,13 @@
       <div>
         <h2 class="text-base font-semibold leading-7 text-gray-900">Amenities</h2>
 
-        <%= form_with model: @property, url: owner_property_path, class:'mt-6' do |f| %>
+        <%= form_with model: @property, url: update_amenities_owner_property_path, class:'mt-6' do |f| %>
           <div class="mt-6 grid grid-cols-1 md:grid-cols-2">
             <% Amenity.all.each do|amenity| %>
               <div class="py-2 flex">
-
+                <%= f.check_box :amenity_ids, {class: 'w-6 h-6 mr-2 rounded-md text-primary focus:ring-primary', multiple: :true}, amenity.id, nil  %>
                 <%= image_tag "amenity_icons/#{amenity.icon}", class:"w-6 h-6" %>
-                <p class="ms-4 font-light"><%= amenity.name %></p>
+                <%= f.label amenity.name, class:'ms-4 font-light' %>
               </div>
             <% end %>
           </div>
