@@ -69,6 +69,9 @@
         <div>
           <h3 class="text-xl font-medium text-gray-900">Price details</h3>
           <div class="flex justify-between font-light mt-6">
+            <%# TODO: Don't fetch price from property model and instead save this to reservation/payment as this might change in future.
+              Update this same concept everywhere else.
+             %>
             <p><%= humanized_money_with_symbol(@property.price) %> x <%= @total_nights %> night</p>
             <p><%= humanized_money_with_symbol(@base_fare) %></p>
           </div>
