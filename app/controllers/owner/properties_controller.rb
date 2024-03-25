@@ -1,7 +1,7 @@
 module Owner
   class PropertiesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_property, only: [:edit, :update, :update_amenities, :add_images, :remove_image]
+    before_action :set_property, only: [:edit, :update, :update_amenities, :add_images, :remove_image, :destroy]
 
     def index
       @properties = current_user.properties
@@ -36,6 +36,11 @@ module Owner
       else
         redirect_back fallback_location: edit_owner_property_path, alert: 'Failed to remove image'
       end
+    end
+
+    def destroy
+      @property.destroy
+      redirect_to owner_properties_path, alert: "#{@property.name} deleted successfully."
     end
 
     private

@@ -108,5 +108,13 @@
         <% end %>
       </div>
     </div>
+
+    <div class="px-8 py-8 border border-red-500 rounded-md lg:flex-auto my-8">
+      <div>
+        <h2 class="text-2xl font-semibold leading-7 text-red-500">Delete Property</h2>
+        <p class="my-2">This action is permanent and irreversible. Are you sure?</p>
+         <%= button_to 'Delete', owner_property_path, method: :delete, class:"mt-4 rounded p-1 bg-red-500 hover:bg-red-700 text-white px-8 py-2" %>
+      </div>
+    </div>
   </main>
 </div>
